@@ -2,24 +2,19 @@
 
   {{> post_form}}
 
-  <div class="posts-container">
-    <div class="post">
-      <img src="images/jamie_follow_through.jpg" alt="Picture of Jamie">
-      <div class="post-body">
-        <h3>Jamie3000</h3>
-        <small>11/6/20 - 11:06</small>
-        <p>This is the post that I wrote myself on the 11th of June. Everyone read it!</p>
+  <div id="posts-container" class="posts-container">
+<!--
+    {{#each posts}}
+      <div class="post">
+        <img src="images/jamie_follow_through.jpg" alt="Picture of Jamie">
+        <div class="post-body">
+          <h3>{{this.author}}</h3>
+          <small>{{this.date}}</small>
+          <p>{{this.body}}</p>
+        </div>
       </div>
-    </div>
-
-    <div class="post">
-      <img src="images/jamie_follow_through.jpg" alt="Picture of Jamie">
-      <div class="post-body">
-        <h3>Jamie3000</h3>
-        <small>11/6/20 - 11:06</small>
-        <p>This is the post that I wrote myself on the 11th of June. Everyone read it!</p>
-      </div>
-    </div>
+    {{/each}}
+-->
   </div>
 
 </div>

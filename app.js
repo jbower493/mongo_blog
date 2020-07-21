@@ -46,12 +46,19 @@ app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
   let activeUser = false;
   if(req.user) {
     activeUser = true;
   }
-  res.render('home', { activeUser: activeUser });
+  res.render('home', {
+    activeUser: activeUser,
+  });
+});
+
+app.get('/all_posts', async (req, res) => {
+  const posts = await Post.find({});
+  res.send(posts);
 });
 
 app.get('/login', (req, res) => {
@@ -107,9 +114,20 @@ app.post('/register', async (req, res) => {
   }
 });
 
-app.post('/create_post', (req, res) => {
-  console.log(req.body);
-  res.redirect('/');
+app.post('/create_post', async (req, res) => {
+  const { postBody } = req.body;
+
+  const newPost = new Post({
+    author: req.user.username,
+    body: postBody
+  });
+  try {
+    await newPost.save();
+    res.redirect('/');
+  } catch (error) {
+    console.log(err);
+    res.render('home', { message: 'There was an error on the server' });
+  }
 });
 
 app.get('/logout', (req, res) => {
