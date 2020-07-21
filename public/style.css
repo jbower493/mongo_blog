@@ -170,16 +170,18 @@ header li:last-of-type {
   border: 1px solid grey;
   border-radius: 10px;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 10px;
   margin: 0 auto 50px auto;
 }
 
-#create-post input {
+#create-post input, #create-post a {
   margin: 0;
   border: none;
 }
 
-#create-post input[type="submit"] {
+#create-post input[type="submit"], #create-post a {
   border-radius: 50px;
   padding-right: 30px;
   padding-left: 30px;

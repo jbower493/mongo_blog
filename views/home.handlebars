@@ -1,17 +1,6 @@
-<header>
-  <a href="/"><h1>Blog</h1></a>
-  <nav>
-    {{> button}}
-  </nav>
-</header>
-
-<h1>{{activeUser}}</h1>
-
 <div class="home-page">
-  <form id="create-post" method="POST" action="/create_post">
-    <input type="text" name="post_body" placeholder="Whats on your mind...">
-    <input class="btn btn-navy" type="submit" value="Post">
-  </form>
+
+  {{> post_form}}
 
   <div class="posts-container">
     <div class="post">
