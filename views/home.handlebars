@@ -1,0 +1,36 @@
+<header>
+  <a href="/"><h1>Blog</h1></a>
+  <nav>
+    {{> button}}
+  </nav>
+</header>
+
+<h1>{{activeUser}}</h1>
+
+<div class="home-page">
+  <form id="create-post" method="POST" action="/create_post">
+    <input type="text" name="post_body" placeholder="Whats on your mind...">
+    <input class="btn btn-navy" type="submit" value="Post">
+  </form>
+
+  <div class="posts-container">
+    <div class="post">
+      <img src="images/jamie_follow_through.jpg" alt="Picture of Jamie">
+      <div class="post-body">
+        <h3>Jamie3000</h3>
+        <small>11/6/20 - 11:06</small>
+        <p>This is the post that I wrote myself on the 11th of June. Everyone read it!</p>
+      </div>
+    </div>
+
+    <div class="post">
+      <img src="images/jamie_follow_through.jpg" alt="Picture of Jamie">
+      <div class="post-body">
+        <h3>Jamie3000</h3>
+        <small>11/6/20 - 11:06</small>
+        <p>This is the post that I wrote myself on the 11th of June. Everyone read it!</p>
+      </div>
+    </div>
+  </div>
+
+</div>

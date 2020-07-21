@@ -1,0 +1,31 @@
+<header>
+  <a href="/"><h1>Blog</h1></a>
+  <nav>
+    {{>button}}
+  </nav>
+</header>
+
+<div class="login-page">
+
+  {{#if message}}
+    <div class="message">{{message}}</div>
+  {{/if}}
+
+  <main>
+    <form id="login-form" method="POST" action="/login">
+      <input type="text" name="username" placeholder="Userame" value="" required>
+      <input type="password" name="password" placeholder="Password" value="" required>
+      <div class="login-spacer">
+        <input class="btn-wide btn-navy" type="submit" value="Login">
+      </div>
+    </form>
+
+    <form id="register-form" method="POST" action="/register">
+      <input type="text" name="username" placeholder="Username" value="{{username}}" required>
+      <input type="password" name="password" placeholder="Password" value="{{password}}" required>
+      <input type="password" name="confirmPassword" placeholder="Confirm Password" value="{{confirmPassword}}" required>
+      <input class="btn-wide btn-pink" type="submit" value="Register">
+    </form>
+  </main>
+
+</div>
