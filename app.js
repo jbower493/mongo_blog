@@ -1,4 +1,5 @@
 const express = require('express');
+require('dotenv').config();
 const handlebars = require('express-handlebars');
 const path = require('path');
 const mongoose = require('mongoose');
@@ -11,7 +12,7 @@ const passportMain = require('./config/passport.js');
 
 const app = express();
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;// || 3000;
 
 // db config
 const db = require('./config/keys.js').mongoUri;
@@ -36,7 +37,7 @@ app.set('view engine', 'handlebars');
 
 app.use(express.urlencoded({ extended: false }));
 app.use(session({
-  secret: 'secret',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false
 }));
