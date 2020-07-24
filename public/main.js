@@ -1,4 +1,5 @@
-const url = 'https://jbwebsites.work/all_posts';
+//const url = 'https://jbwebsites.work/all_posts';
+const url = 'http://localhost:3000/all_posts';
 const postsContainer = document.getElementById('posts-container');
 
 const displayPosts = (postsArray) => {

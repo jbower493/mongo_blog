@@ -2,11 +2,13 @@ const express = require('express');
 require('dotenv').config();
 const handlebars = require('express-handlebars');
 const path = require('path');
+const fs = require('fs');
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const flash = require('connect-flash');
 const session = require('express-session');
+const morgan = require('morgan');
 const passport = require('passport');
 const passportMain = require('./config/passport.js');
 
@@ -45,6 +47,14 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
+
+const logStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' });
+
+morgan.token('req-ip', (req, res) => {
+  return req.ip;
+});
+
+app.use(morgan(':req-ip :method :total-time :date ', { stream: logStream }));
 
 
 app.get('/', async (req, res) => {
@@ -110,7 +120,6 @@ app.post('/register', async (req, res) => {
     req.flash('message', 'You are now registered and can login');
     res.redirect('/login');
   } catch (err) {
-    console.log(err);
     res.render('login_register', { message: 'There was an error on the server' });
   }
 });
@@ -126,14 +135,12 @@ app.post('/create_post', async (req, res) => {
     await newPost.save();
     res.redirect('/');
   } catch (error) {
-    console.log(err);
     res.render('home', { message: 'There was an error on the server' });
   }
 });
 
 app.get('/logout', (req, res) => {
   req.logout();
-  console.log('Logged out');
   res.redirect('/');
 });
 

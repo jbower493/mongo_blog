@@ -31,7 +31,6 @@ const passportMain = passport => {
         if(!matches) {
           return done(null, false, { message: 'Incorrect Username or Password' });
         }
-        console.log('Logged in');
         return done(null, user);
       });
     });
